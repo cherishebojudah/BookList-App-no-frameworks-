@@ -12,27 +12,27 @@ class UI {
     static displayBooks() {
         const StoredBooks = [
             {
-                title: 'Book One',
-                author: 'john Doe',
+                title: 'A time to Kill',
+                author: 'John Grisham',
                 publisher: 'Penguin Books'
             },
 
             {
-                title: 'Book One',
-                author: 'john Doe',
-                publisher: 'Penguin Books'
+                title: 'Midnight Stalker',
+                author: 'Julia Roberts',
+                publisher: 'Hallmark Books'
             },
 
             {
-                title: 'Book One',
-                author: 'john Doe',
-                publisher: 'Penguin Books'
+                title: 'The Pelican Brief',
+                author: 'Dan Brown',
+                publisher: 'Whitewater Books'
             }
         ];
 
         const books = StoredBooks; 
 
-        books.forEach((book) => UI.addBookToList());
+        books.forEach((book) => UI.addBookToList(book));
     }
 
     static addBookToList(book) {
@@ -53,8 +53,23 @@ class UI {
 
 //Store class; Handles storage
 
-//Event: Display book
+//Event: Display books
+document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
 // Event: Add a book
+document.querySelector('#book-form').addEventListener('submit', (e) => {
+    // prevent default submit action
+    e.preventDefault();
+    //Get form values
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const publisher = document.querySelector('#publisher').value;
+
+    //Instantiate a new book
+    const book = new Book(title, author, publisher);
+
+    //Add book to list
+    UI.addBookToList(book);
+});
 
 //Event: Remove a book

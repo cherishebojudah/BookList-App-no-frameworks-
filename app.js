@@ -76,6 +76,19 @@ class UI {
 }
 
 //Store class; Handles storage
+class Store {
+    static getBooks() {
+        
+    }
+    
+    static addBooks(book) {
+
+    }
+    
+    static removeBook(book) {
+
+    }
+}
 
 //Event: Display books
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
@@ -100,6 +113,9 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
         //Add book to list
         UI.addBookToList(book);
 
+        //Show success message
+        UI.showAlert('Book Added', 'success')
+
         //clear fields
         UI.clearFields();
     }
@@ -107,5 +123,8 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
 //Event: Remove a book
 document.querySelector('#book-list').addEventListener('click', (e) => {
-    UI.deleteBook(e.target)
+    UI.deleteBook(e.target);
+
+    //Show success message
+    UI.showAlert('Book Removed', 'info');
 });
